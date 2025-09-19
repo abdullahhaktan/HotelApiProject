@@ -1,0 +1,56 @@
+﻿@model List<InboxContactDto>
+
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="email-left-box">
+    <a href="/AdminContact/AddAdminContact" class="btn btn-primary btn-block">Yeni Mesaj Oluştur</a>
+    @await Html.PartialAsync("SideBarAdminContactPartial")
+    <h5 class="mt-5 m-b-10">Kategoriler</h5>
+    @await Html.PartialAsync("SideBarAdminCategoryContactPartial")
+</div>
+<div class="email-right-box">
+    <div class="toolbar-and-list" style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div role="toolbar" class="toolbar" style="width: 100%;">
+            <div class="btn-group">
+                <button aria-expanded="false" style="margin-left:85px" data-toggle="dropdown" class="btn btn-dark" type="button">
+                    Gelen Mesajlar <span class="caret m-l-5"></span>
+                </button>
+            </div>
+        </div>
+        <div class="email-list" style="width: 100%; margin-top: 20px;">
+            @foreach (var item in Model)
+            {
+                <div class="message" style="display: flex; align-items: center;">
+                    <div class="col-mail col-mail-2" style="margin-left:0px">
+                        <button onclick="showMessageDetail('@item.ContactID','@item.Name','@item.Subject','@item.Message','@item.Mail')" class="btn btn-outline-primary">
+                            @(item.Message.Length >= 10 ? item.Message.Substring(0, 10) + "..." : @item.Message)
+                        </button>
+                        <div class="date" style="margin-left: 16px;">@((item.Date).ToString("dd.MM.yyyy"))</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function showMessageDetail(id,name,subject,message,mail)
+    {
+        Swal.fire({
+            title:'Mesaj Detayı',
+            html: ` <p><strong>Kimden:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${mail}</p>
+                <p><strong>Konu:</strong> ${subject}</p>
+                <p><strong>Mesaj:</strong><br>${message}</p>
+                `,
+                icon:'info',
+                confirmButtonText:'Kapat'
+        }).then((result)=>{
+               window.location.href = `/AdminContact/ChangeIsRead/${id}`;
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

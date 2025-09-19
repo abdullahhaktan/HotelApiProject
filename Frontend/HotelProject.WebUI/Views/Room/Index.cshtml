@@ -1,0 +1,33 @@
+﻿@model List<RoomViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Oda numarası</th>
+        <th>Oda Resim</th>
+        <th>Ücret</th>
+        <th>Başlık</th>
+        <th>Yatak sayısı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.RoomID</td>
+            <td>@item.RoomNumber</td>
+            <td>@item.RoomCoverageImage</td>
+            <td>@item.Price</td>
+            <td>@item.Title</td>
+            <td>@item.BedCount</td>
+            <td> <a class="btn mb-1 btn-rounded btn-outline-danger" href="/Room/DeleteRoom/@item.RoomID/">Sil</a></td>
+            <td> <a class="btn mb-1 btn-rounded btn-outline-warning" href="/Room/UpdateRoom/@item.RoomID/">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a class="btn mb-1 btn-rounded btn-outline-success" href="/Room/AddRoom/">Yeni oda girişi</a>

@@ -1,0 +1,59 @@
+﻿@model List<ResultSendBoxDto>
+
+@{
+    ViewData["Title"] = "Sendbox";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="email-left-box">
+    <a href="/AdminContact/AddAdminContact" class="btn btn-primary btn-block">Yeni Mesaj Oluştur</a>
+    @await Html.PartialAsync("SideBarAdminContactPartial")
+    <h5 class="mt-5 m-b-10">Kategoriler</h5>
+    @await Html.PartialAsync("SideBarAdminCategoryContactPartial")
+</div>
+<div class="email-right-box">
+    <div class="toolbar-and-list" style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div role="toolbar" class="toolbar" style="width: 100%;">
+            <div class="btn-group">
+                <button aria-expanded="false" style="margin-left:85px" data-toggle="dropdown" class="btn btn-dark" type="button">
+                    Gelen Mesajlar <span class="caret m-l-5"></span>
+                </button>
+            </div>
+        </div>
+        <div class="email-list m-t-15" style="width: 100%; margin-top: 20px;">
+            @foreach (var item in Model)
+            {
+                <div class="message" style="display: flex; align-items: center;">
+
+                    <div class="col-mail col-mail-2" style="margin-left:0px">
+                        <button onclick="showMessageDetail('@item.SendMessageID','@item.SenderName','@item.SenderMail','@item.ReceiverName','@item.ReceiverMail','@item.Content')" class="btn btn-outline-primary">
+                            @(item.Content.Length >= 10 ? item.Content.Substring(0, 10) + "..." : @item.Content)
+                        </button>
+                       <div class="date" style="margin-left: 16px;">@((item.Date).ToString("dd.MM.yyyy"))</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function showMessageDetail(id,senderName,senderMail,receiverName,receiverMail,content)
+    {
+        Swal.fire({
+            title:'Mesaj Detayı',
+            html: ` <p><strong>Kimden:</strong> ${id}</p>
+                <p><strong>Gönderen:</strong> ${senderName}</p>
+                <p><strong>Gönderen mail:</strong> ${senderMail}</p>
+                <p><strong>Alıcı:</strong><br>${receiverName}</p>
+                <p><strong>Alıcı mail:</strong><br>${receiverMail}</p>
+                <p><strong>İçerik:</strong><br>${content}</p>
+                `,
+                icon:'info',
+                confirmButtonText:'Kapat'
+        }).then((result)=>{
+               
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
