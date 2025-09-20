@@ -21,6 +21,8 @@
                     <th>Onayla</th>
                     <th>İptal Et</th>
                     <th>Beklet</th>
+                    <th>Aranacak yap</th>
+                    <th>Sil</th>
                     <th>Güncelle</th>
                     <th>Detaylar</th>
                 </tr>
@@ -28,22 +30,164 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    string deger;
+                    string badgeColor;
+
                     count++;
+
+                    if (item.Status.ToLower() == "onaylandı")
+                    {
+                        deger = "success";
+                        badgeColor = "#28a745";
+                    }
+                    else if (item.Status.ToLower() == "iptal edildi")
+                    {
+                        deger = "danger";
+                        badgeColor = "#dc3545";
+                    }
+                    else if (item.Status == "Onay bekliyor")
+                    {
+                        deger = "warning";
+                        badgeColor = "#ffc107";
+                    }
+                    else if (item.Status.ToLower() == "müşteri aranacak")
+                    {
+                        deger = "secondary";
+                        badgeColor = "#6c757d";
+                    }
+                    else
+                    {
+                        deger = "primary";
+                        badgeColor = "#007bff";
+                    }
+
                     <tr>
                         <th>@count</th>
                         <td>@item.Name</td>
-                        <td>@(((DateTime)item.Checkin).ToString("dd-MMM-yyyy")) </td>
-                        <td>@(((DateTime)item.Checkout).ToString("dd-MMM-yyyy")) </td>
-                        <td><span class="badge badge-primary px-2">@item.Status</span></td>
-                        <td><a href="/BookingAdmin/ApprovedBookingDto/@item.BookingID" class="btn btn-outline-primary">Onayla</a></td>
-                        <td><a href="#" class="btn btn-outline-danger">İptal Et</a></td>
-                        <td><a href="#" class="btn btn-outline-warning">Beklet</a></td>
-                        <td><a href="#" class="btn btn-outline-info">Güncelle</a></td>
-                        <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+                        <td>@(((DateTime)item.Checkin).ToString("dd-MMM-yyyy"))</td>
+                        <td>@(((DateTime)item.Checkout).ToString("dd-MMM-yyyy"))</td>
+                        <td>
+                            <span class="badge badge-primary px-2" style="background-color:@badgeColor; color:white;">
+                                @item.Status
+                            </span>
+                        </td>
+                        <td><a href="/BookingAdmin/ApproveBooking/@item.BookingID" class="btn btn-outline-primary">Onayla</a></td>
+                        <td><a href="/BookingAdmin/CancelBooking/@item.BookingID" class="btn btn-outline-danger">İptal Et</a></td>
+                        <td><a href="/BookingAdmin/ChangeToWait/@item.BookingID" class="btn btn-outline-warning">Beklet</a></td>
+                        <td><a href="/BookingAdmin/ChangeToCall/@item.BookingID" class="btn btn-outline-secondary">Aranacak Yap</a></td>
+                        <td><a href="/BookingAdmin/DeleteBooking/@item.BookingID" class="btn btn-outline-info">Sil</a></td>
+                        <td><a href="/BookingAdmin/UpdateBooking/@item.BookingID" class="btn btn-outline-info">Güncelle</a></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#bookingModal"
+                                    data-bookingid="@item.BookingID"
+                                    data-name="@item.Name"
+                                    data-mail="@item.Mail"
+                                    data-checkin="@item.Checkin.ToString("dd-MMM-yyyy")"
+                                    data-checkout="@item.Checkout.ToString("dd-MMM-yyyy")"
+                                    data-adultcount="@item.AdultCount"
+                                    data-childcount="@item.ChildCount"
+                                    data-roomcount="@item.RoomCount"
+                                    data-specialrequest="@item.SpecialRequest"
+                                    data-description="@item.Description"
+                                    data-status="@item.Status"
+                                    data-city="@item.City"
+                                    data-country="@item.Country">
+                                Detaylar
+                            </button>
+                        </td>
                     </tr>
                 }
-
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Rezervasyon Detayları</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Misafir Bilgileri</h6>
+                        <p><strong>Ad Soyad:</strong> <span id="modalName"></span></p>
+                        <p><strong>E-posta:</strong> <span id="modalMail"></span></p>
+                        <p><strong>Şehir:</strong> <span id="modalCity"></span></p>
+                        <p><strong>Ülke:</strong> <span id="modalCountry"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Rezervasyon Bilgileri</h6>
+                        <p><strong>Giriş Tarihi:</strong> <span id="modalCheckin"></span></p>
+                        <p><strong>Çıkış Tarihi:</strong> <span id="modalCheckout"></span></p>
+                        <p><strong>Yetişkin Sayısı:</strong> <span id="modalAdultCount"></span></p>
+                        <p><strong>Çocuk Sayısı:</strong> <span id="modalChildCount"></span></p>
+                        <p><strong>Oda Sayısı:</strong> <span id="modalRoomCount"></span></p>
+                        <p><strong>Durum:</strong> <span id="modalStatus"></span></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h6>Özel İstekler</h6>
+                        <p id="modalSpecialRequest" class="bg-light p-3"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h6>Açıklama</h6>
+                        <p id="modalDescription" class="bg-light p-3"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#bookingModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Detaylar butonu
+
+                // Butondan verileri al
+                var bookingId = button.data('bookingid');
+                var name = button.data('name');
+                var mail = button.data('mail');
+                var checkin = button.data('checkin');
+                var checkout = button.data('checkout');
+                var adultCount = button.data('adultcount');
+                var childCount = button.data('childcount');
+                var roomCount = button.data('roomcount');
+                var specialRequest = button.data('specialrequest') || "Özel istek bulunmamaktadır.";
+                var description = button.data('description') || "Açıklama bulunmamaktadır.";
+                var status = button.data('status');
+                var city = button.data('city');
+                var country = button.data('country');
+
+                // Modal içeriğini doldur
+                var modal = $(this);
+                modal.find('.modal-title').text(name + ' - Rezervasyon Detayları');
+                modal.find('#modalName').text(name);
+                modal.find('#modalMail').text(mail);
+                modal.find('#modalCheckin').text(checkin);
+                modal.find('#modalCheckout').text(checkout);
+                modal.find('#modalAdultCount').text(adultCount);
+                modal.find('#modalChildCount').text(childCount);
+                modal.find('#modalRoomCount').text(roomCount);
+                modal.find('#modalSpecialRequest').text(specialRequest);
+                modal.find('#modalDescription').text(description);
+                modal.find('#modalStatus').text(status);
+                modal.find('#modalCity').text(city);
+                modal.find('#modalCountry').text(country);
+            });
+        });
+    </script>
+}

@@ -39,14 +39,26 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" asp-for="Country" placeholder="Ülke">
+                                    <label for="Country">Ülke</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" asp-for="City" placeholder="Şehir">
+                                    <label for="City">Şehir</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-floating date" id="date3" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" asp-for="Checkin" placeholder="Giriş tarihiniz" data-target="#date3" data-toggle="datetimepicker" />
+                                    <input type="date" class="form-control datetimepicker-input" asp-for="Checkin" placeholder="Giriş tarihiniz" data-target="#date3" data-toggle="datetimepicker" />
                                     <label for="Checkin">Giriş tarihi</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating date" id="date4" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" asp-for="Checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
+                                    <input type="date" class="form-control datetimepicker-input" asp-for="Checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
                                     <label for="checkout">Check Out</label>
                                 </div>
                             </div>

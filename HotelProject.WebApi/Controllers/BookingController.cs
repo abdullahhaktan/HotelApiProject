@@ -35,7 +35,7 @@ namespace HotelProject.WebApi.Controllers
             _bookingService.TDelete(values);
             return Ok();
         }
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult UpdateBooking(Booking booking)
         {
             _bookingService.TUpdate(booking);

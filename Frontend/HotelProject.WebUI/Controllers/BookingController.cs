@@ -32,15 +32,26 @@ namespace HotelProject.WebUI.Controllers
         {
             createBookingDto.Status = "Onay Bekliyor";
             createBookingDto.Description = "fdsfasfda";
-            var client = _httpClient.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createBookingDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("http://localhost:5123/api/Booking",stringContent);
 
-            if(responseMessage.IsSuccessStatusCode)
+            var client = _httpClient.CreateClient();
+
+            // Configure JsonSerializerSettings to use ISO 8601 format for DateTime.
+            //var settings = new JsonSerializerSettings
+            //{
+            //    DateFormatString = "yyyy-MM-ddTHH:mm:ss.fffZ"
+            //};
+
+            var jsonData = JsonConvert.SerializeObject(createBookingDto/*, settings*/);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var responseMessage = await client.PostAsync("http://localhost:5123/api/Booking", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
+
+            // You can log the error details for debugging if the request fails
+            var errorContent = await responseMessage.Content.ReadAsStringAsync();
 
             return View();
         }

@@ -1,0 +1,54 @@
+﻿@model UpdateBookingDto
+
+@{
+    ViewData["Title"] = "UpdateBooking";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="BookingID" class="form-control" />
+
+    <label>Ad Soyadı</label>
+    <input type="text" asp-for="Name" placeholder="Ad Soyad" class="form-control" />
+    <br />
+
+    <label>Mail adresi</label>
+    <input type="text" asp-for="Mail" placeholder="Mail adresi" class="form-control" />
+    <br />
+
+    <label>Giriş tarihi</label>
+    <input type="date" asp-for="Checkin" placeholder="Giriş tarihi" class="form-control" />
+    <br />
+
+    <label>Çıkış tarihi</label>
+    <input type="date" asp-for="Checkout" placeholder="Gidiş tarihi" class="form-control" />
+    <br />
+
+    <label>Yetişkin sayısı</label>
+    <input type="text" asp-for="AdultCount" placeholder="Yetişkin sayısı" class="form-control" />
+    <br />
+
+    <label>Çocuk sayısı</label>
+    <input type="text" asp-for="ChildCount" placeholder="Çocuk sayısı" class="form-control" />
+    <br />
+
+    <label>Oda sayısı</label>
+    <input type="text" asp-for="RoomCount" placeholder="Oda sayısı" class="form-control" />
+    <br />
+
+    <label>Ülke</label>
+    <input type="text" asp-for="Country" placeholder="Ülke" class="form-control" />
+    <br />
+
+    <label>Şehir</label>
+    <input type="text" asp-for="City" placeholder="Şehir" class="form-control" />
+    <br />
+
+
+    <label>Durum</label>
+    <input type="text" asp-for="Status" placeholder="Durum" class="form-control" />
+    <br />
+
+    <button class="btn btn-outline-success" type="submit">Odayı Güncelle</button>
+
+</form>
