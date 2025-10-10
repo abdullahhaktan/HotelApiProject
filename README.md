@@ -139,10 +139,6 @@ Follow these steps to set up and run the project locally:
 
 ---
 
-<img width="329" height="367" alt="Ekran görüntüsü 2025-10-10 155153" src="https://github.com/user-attachments/assets/b4c5ff50-f910-4d06-bb33-e13b8b0eeda2" />
-
----
-
 <img width="735" height="272" alt="Ekran görüntüsü 2025-10-10 155923" src="https://github.com/user-attachments/assets/3373f3c5-2e43-4b09-8e53-16864316a045" />
 
 ---
