@@ -123,20 +123,19 @@ Follow these steps to set up and run the project locally:
 
 ---
 
-<img width="493" height="272" alt="Ekran görüntüsü 2025-10-10 155055" src="https://github.com/user-attachments/assets/b035008e-e767-4808-875d-5198235435f4" />
+<img width="791" height="419" alt="Ekran görüntüsü 2025-10-10 155730" src="https://github.com/user-attachments/assets/5248e2a7-c4f1-4d47-aa8f-7d3abe3f6457" />
 
 ---
 
-<img width="491" height="308" alt="Ekran görüntüsü 2025-10-10 155111" src="https://github.com/user-attachments/assets/2c310b38-dc7f-4f7d-b7a2-0cada7b9f185" />
+<img width="782" height="427" alt="Ekran görüntüsü 2025-10-10 155824" src="https://github.com/user-attachments/assets/eec58b06-f586-478c-864d-491ea5f9fe35" />
 
 ---
 
-<img width="331" height="324" alt="Ekran görüntüsü 2025-10-10 155138" src="https://github.com/user-attachments/assets/f4a0c5f8-f941-41ea-b134-ec576404959b" />
-
+<img width="773" height="438" alt="Ekran görüntüsü 2025-10-10 155849" src="https://github.com/user-attachments/assets/9e96376c-41e3-4151-aa2c-261f8a09c258" />
 
 ---
 
-<img width="329" height="367" alt="Ekran görüntüsü 2025-10-10 155153" src="https://github.com/user-attachments/assets/2b1fa951-579c-403d-b6c4-e204272760c3" />
+<img width="747" height="440" alt="Ekran görüntüsü 2025-10-10 155909" src="https://github.com/user-attachments/assets/cb64fff9-57c3-48c9-aa0a-8d2595045db3" />
 
 ---
 
@@ -144,4 +143,8 @@ Follow these steps to set up and run the project locally:
 
 ---
 
-<img width="941" height="445" alt="Ekran görüntüsü 2025-10-03 14391nşl0" src="https://github.com/user-attachments/assets/930ede5f-e1e7-4c73-83e2-1914015ec81e" />
+<img width="735" height="272" alt="Ekran görüntüsü 2025-10-10 155923" src="https://github.com/user-attachments/assets/3373f3c5-2e43-4b09-8e53-16864316a045" />
+
+---
+
+<img width="937" height="438" alt="Ekran görüntüsü 2025-10-10 160013" src="https://github.com/user-attachments/assets/69b79da5-6ff4-4d93-a175-f03d06093494" />
