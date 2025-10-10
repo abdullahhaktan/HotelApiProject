@@ -123,7 +123,19 @@ Follow these steps to set up and run the project locally:
 
 ---
 
-<img width="283" height="439" alt="Ekran görüntüsü 2025-10-10 131414" src="https://github.com/user-attachments/assets/695c54d3-c324-4d22-b4c3-a4ec21ce912c" />
+<img width="493" height="272" alt="Ekran görüntüsü 2025-10-10 155055" src="https://github.com/user-attachments/assets/b035008e-e767-4808-875d-5198235435f4" />
+
+---
+
+<img width="491" height="308" alt="Ekran görüntüsü 2025-10-10 155111" src="https://github.com/user-attachments/assets/2c310b38-dc7f-4f7d-b7a2-0cada7b9f185" />
+
+---
+
+<img width="491" height="308" alt="Ekran görüntüsü 2025-10-10 155111" src="https://github.com/user-attachments/assets/c0439cbf-e7fa-41f1-9a15-00cc309351d3" />
+
+---
+
+<img width="329" height="367" alt="Ekran görüntüsü 2025-10-10 155153" src="https://github.com/user-attachments/assets/2b1fa951-579c-403d-b6c4-e204272760c3" />
 
 ---
 
