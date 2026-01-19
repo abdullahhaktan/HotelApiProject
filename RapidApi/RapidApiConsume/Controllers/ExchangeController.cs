@@ -15,10 +15,10 @@ namespace RapidApiConsume.Controllers
                 Method = HttpMethod.Get,
                 RequestUri = new Uri("https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?currency=TRY&locale=en-gb"),
                 Headers =
-    {
-        { "x-rapidapi-key", "b6a5624d34mshfcd3224e3121bffp1507c4jsnfd478a0285e4" },
-        { "x-rapidapi-host", "booking-com.p.rapidapi.com" },
-    },
+                {
+                    { "x-rapidapi-key", "b6a5624d34mshfcd3224e3121bffp1507c4jsnfd478a0285e4" },
+                    { "x-rapidapi-host", "booking-com.p.rapidapi.com" },
+                },
             };
             using (var response = await client.SendAsync(request))
             {
